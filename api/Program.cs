@@ -1,3 +1,6 @@
+using api.Domain;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
+builder.Services.AddDbContext<MovieManagementContext>(options =>
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
 var app = builder.Build();
 
