@@ -1,4 +1,7 @@
 using api.Domain;
+using api.Extensions;
+using api.Interfaces;
+using api.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 builder.Services.AddDbContext<MovieManagementContext>(options =>
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
 var app = builder.Build();
 
@@ -22,6 +27,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(p => p.WithOrigins("http://localhost:4200")
     .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+
+app.MapMovieEndpoints();
 
 app.UseHttpsRedirection();
 
