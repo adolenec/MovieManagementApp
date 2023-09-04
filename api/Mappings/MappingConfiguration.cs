@@ -21,6 +21,19 @@ namespace api.Mappings
                 .ForCtorParam(ctorParamName: "Director", opt =>
                         opt.MapFrom(src => src.Director.FirstName + " " + src.Director.LastName));
 
+            CreateMap<CreateMovieDto, Movie>();
+
+            #endregion
+
+            #region Categories
+
+            CreateMap<Category, CategoryDto>();
+
+            CreateMap<Category, CategoryDetailsDto>()
+                .ForCtorParam(ctorParamName: "Movies", opt => opt.MapFrom(src => src.Movies));
+
+            CreateMap<CreateCategoryDto, Category>();
+
             #endregion
 
         }

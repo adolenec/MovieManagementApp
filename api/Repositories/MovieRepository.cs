@@ -1,5 +1,6 @@
 ﻿using System;
 using api.Domain;
+using api.Domain.Entities;
 using api.Dtos;
 using api.Interfaces;
 using api.Mappings;
@@ -56,6 +57,31 @@ namespace api.Repositories
             return _mapper.Map<MovieDetailsDto>(movie);
         }
 
+        public async Task<MovieDetailsDto> AddMovieAsync(CreateMovieDto createMovieDto)
+        {
+            var movie = _mapper.Map<Movie>(createMovieDto);
+            _context.Movies.Add(movie);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<MovieDetailsDto>(movie);
+        }
+
+        public async Task<MovieDetailsDto> UpdateMovieAsync(UpdateMovieDto updateMovieDto, int id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie is null)
+                throw new ArgumentException($"Error updating movie");
+            movie.Name = updateMovieDto.Name;
+            movie.Description = updateMovieDto.Description;
+            movie.Rating = updateMovieDto.Rating;
+            movie.Duration = updateMovieDto.Duration;
+            movie.CategoryId = updateMovieDto.CategoryId;
+            movie.DirectorId = updateMovieDto.DirectorId;
+            _context.Entry(movie).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return _mapper.Map<MovieDetailsDto>(movie);
+            
+        }
+
         public async Task UpdateFavouriteState(int id, bool isFavourite)
         {
             var movie = await _context.Movies.FindAsync(id);
@@ -83,6 +109,15 @@ namespace api.Repositories
                 throw new ArgumentException("$Error updating movie isOnWatchlist state");
             movie.IsOnWatchlist = isOnWatchlist;
             _context.Entry(movie).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteMovieAsync(int id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie is null)
+                throw new ArgumentException($"Error deleting movie");
+            _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
         }
     }
