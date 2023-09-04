@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "9xBlPW+Mi2TOvPR8NFVTYttua8oOTxzAaONEzsQsM+s9pCZ42QPIy4ffCl0OFBWxBHygu5676vpRspY787Ylbg==",
+  "success": true,
+  "projectFilePath": "/Users/adolenec/Documents/Projects/MovieManagementApp/api/api.csproj",
+  "expectedPackageFiles": [
+    "/Users/adolenec/.nuget/packages/microsoft.aspnetcore.openapi/7.0.7/microsoft.aspnetcore.openapi.7.0.7.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/swashbuckle.aspnetcore/6.5.0/swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "/Users/adolenec/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
