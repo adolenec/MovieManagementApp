@@ -69,8 +69,8 @@ namespace api.Repositories
             var category = await _context.Categories.FindAsync(id);
             if (category is null)
                 throw new ArgumentException($"Error updating category");
-            category.Name = updateCategoryDto.category.Name;
-            category.Description = updateCategoryDto.category.Description;
+            category.Name = updateCategoryDto.Name;
+            category.Description = updateCategoryDto.Description;
             _context.Entry(category).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return _mapper.Map<CategoryDetailsDto>(category);

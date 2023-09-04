@@ -28,6 +28,9 @@
     <None Remove="Mappings\" />
     <None Remove="Extensions\" />
     <None Remove="Models\" />
+    <None Remove="Dtos\Category\" />
+    <None Remove="Dtos\Movie\" />
+    <None Remove="Dtos\Director\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -38,5 +41,8 @@
     <Folder Include="Mappings\" />
     <Folder Include="Extensions\" />
     <Folder Include="Models\" />
+    <Folder Include="Dtos\Category\" />
+    <Folder Include="Dtos\Movie\" />
+    <Folder Include="Dtos\Director\" />
   </ItemGroup>
 </Project>

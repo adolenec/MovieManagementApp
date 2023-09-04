@@ -36,6 +36,17 @@ namespace api.Mappings
 
             #endregion
 
+            #region
+
+            CreateMap<Director, DirectorDto>();
+
+            CreateMap<Director, DirectorDetailsDto>()
+                .ForCtorParam(ctorParamName: "Movies", opt => opt.MapFrom(src => src.Movies));
+
+            CreateMap<CreateDirectorDto, Director>();
+
+            #endregion
+
         }
     }
 }

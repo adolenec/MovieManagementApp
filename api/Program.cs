@@ -16,6 +16,7 @@ builder.Services.AddDbContext<MovieManagementContext>(options =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IDirectorRepository, DirectorRepository>();
 
 var app = builder.Build();
 
@@ -31,6 +32,7 @@ app.UseCors(p => p.WithOrigins("http://localhost:4200")
 
 app.MapMovieEndpoints();
 app.MapCategoryEndpoints();
+app.MapDirectorEndpoints();
 
 app.UseHttpsRedirection();
 

@@ -21,9 +21,13 @@ namespace api.Extensions
                 return Results.Ok(movie);
             });
 
-            app.MapPost("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, CreateMovieDto createMovieDto) =>
+            app.MapPost("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, IDirectorRepository directorRepository, CreateMovieDto createMovieDto) =>
             {
-                // TODO: DirectorId
+                var director = await directorRepository.GetDirectorAsync(createMovieDto.DirectorId);
+
+                if (director is null)
+                    return Results.Problem($"Director with id {createMovieDto.DirectorId} was not found", statusCode: 404);
+
                 var category = await categoryRepository.GetCategoryAsync(createMovieDto.CategoryId);
 
                 if (category is null)
@@ -34,14 +38,17 @@ namespace api.Extensions
                 return Results.Created($"/movies/{movie.Id}", movie);
             });
 
-            app.MapPut("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, UpdateMovieDto updateMovieDto, int id) =>
+            app.MapPut("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, IDirectorRepository directorRepository, UpdateMovieDto updateMovieDto, int id) =>
             {
                 var movie = await repository.GetMovieAsync(id);
 
                 if (movie is null)
                     return Results.Problem($"Movie with id {id} was not found", statusCode: 404);
 
-                // TODO: Add check for director
+                var director = await directorRepository.GetDirectorAsync(updateMovieDto.DirectorId);
+
+                if (director is null)
+                    return Results.Problem($"Director with id {updateMovieDto.DirectorId} was not found", statusCode: 404);
 
                 var category = await categoryRepository.GetCategoryAsync(updateMovieDto.CategoryId);
 
