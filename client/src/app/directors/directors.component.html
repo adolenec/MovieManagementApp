@@ -1,1 +1,28 @@
-<p>directors works!</p>
+<ng-container>
+  <div class="flex justify-between items-center">
+    <h1 class="text-5xl mb-4">Directors</h1>
+    <input
+      #search
+      type="text"
+      placeholder="Search..."
+      (input)="onSearchDirectors(search.value)"
+    />
+  </div>
+  <p-dataView
+    #dv
+    layout="list"
+    loadingIcon="pi pi-spin pi-spinner"
+    [value]="directors().items"
+    [loading]="loadingDirectors()"
+    [paginator]="true"
+    [rows]="directorsRequest().pageSize"
+    [totalRecords]="directors().totalCount"
+    [rowsPerPageOptions]="[5, 10, 15]"
+    [lazy]="true"
+    (onPage)="onPageChange($event)"
+  >
+    <ng-template let-director pTemplate="listItem">
+      <app-director-item [director]="director"></app-director-item>
+    </ng-template>
+  </p-dataView>
+</ng-container>

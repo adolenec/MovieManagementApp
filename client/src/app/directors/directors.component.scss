@@ -1,0 +1,39 @@
+:host::ng-deep {
+  .p-dataview {
+    @apply max-h-[90%] overflow-scroll;
+  }
+
+  .p-dataview-list {
+    @apply flex flex-col gap-3;
+  }
+
+  .p-dataview-content {
+    @apply bg-transparent max-h-full overflow-scroll;
+  }
+
+  .p-paginator {
+    @apply bg-slate-500 mb-2;
+
+    .p-paginator-first,
+    .p-paginator-last {
+      @apply hover:bg-slate-300 text-slate-50;
+    }
+  }
+
+  .p-paginator-pages {
+    @apply bg-transparent text-slate-50;
+
+    .p-paginator-page {
+      @apply hover:bg-slate-300 text-slate-50;
+    }
+
+    .p-paginator-page.p-highlight {
+      @apply text-slate-950;
+    }
+  }
+
+  .p-paginator-next,
+  .p-paginator-prev {
+    @apply hover:bg-slate-200 text-slate-50;
+  }
+}
