@@ -1,0 +1,14 @@
+<nav class="bg-slate-600 flex items-center gap-16 py-6 px-12 w-full">
+  <h1 class="text-lg md:text-3xl">MovieManagementApp</h1>
+  <ul class="list-none flex items-center gap-8">
+    <li class="hover:text-slate-100">
+      <a [routerLink]="['/movies']" routerLinkActive="active">Movies</a>
+    </li>
+    <li class="hover:text-slate-100">
+      <a [routerLink]="['/directors']" routerLinkActive="active">Directors</a>
+    </li>
+    <li class="hover:text-slate-100">
+      <a [routerLink]="['/categories']" routerLinkActive="active">Categories</a>
+    </li>
+  </ul>
+</nav>
