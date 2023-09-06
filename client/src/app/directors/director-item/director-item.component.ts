@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Director } from '../models/director.model';
@@ -8,6 +8,7 @@ import { Director } from '../models/director.model';
   standalone: true,
   imports: [RouterLink, DatePipe],
   templateUrl: './director-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DirectorItemComponent {
   @Input({ required: true }) director!: Director;

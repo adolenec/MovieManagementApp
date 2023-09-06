@@ -22,3 +22,9 @@ input {
     @apply outline-none;
   }
 }
+
+.p-dialog {
+  .p-dialog-content {
+    @apply bg-slate-500 rounded-lg p-0;
+  }
+}

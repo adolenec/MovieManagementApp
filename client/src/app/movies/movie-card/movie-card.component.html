@@ -1,5 +1,6 @@
 <div
   class="bg-slate-500 text-slate-300 h-64 rounded-lg m-2 text-center flex flex-col justify-between py-5 px-3"
+  [routerLink]="['/movies', movie.id]"
 >
   <div class="mb-3">
     <p class="font-bold">{{ movie.name }}</p>

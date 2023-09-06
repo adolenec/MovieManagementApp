@@ -5,7 +5,10 @@
     ></a>
     <div>
       <i class="pi pi-pencil text-2xl mr-3 rounded-full p-2 cursor-pointer"></i>
-      <i class="pi pi-times-circle text-2xl curcor-pointer"></i>
+      <i
+        (click)="onConfirmDelete()"
+        class="pi pi-times-circle text-2xl cursor-pointer"
+      ></i>
     </div>
   </div>
   <p-divider align="left">
@@ -23,7 +26,10 @@
         <p>{{ directorDetails().description }}</p>
       </div>
     </div>
-    <div class="w-[60%] flex-none">
+    <div
+      class="w-[60%] flex-none"
+      *ngIf="directorDetails().movies?.length !== 0"
+    >
       <p-carousel
         [value]="directorDetails().movies"
         [numVisible]="3"
