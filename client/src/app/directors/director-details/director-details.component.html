@@ -1,1 +1,38 @@
-<p>director-details works!</p>
+<div class="flex flex-col p-2 max-h-full">
+  <div class="flex items-center justify-between">
+    <a [routerLink]="['..']"
+      ><i class="pi pi-arrow-circle-left text-2xl cursor-pointer"></i
+    ></a>
+    <div>
+      <i class="pi pi-pencil text-2xl mr-3 rounded-full p-2 cursor-pointer"></i>
+      <i class="pi pi-times-circle text-2xl curcor-pointer"></i>
+    </div>
+  </div>
+  <p-divider align="left">
+    <h1 class="text-3xl">
+      {{ directorDetails().firstName }} {{ directorDetails().lastName }}
+    </h1>
+  </p-divider>
+  <div class="max-h-[90%] overflow-scroll flex gap-4">
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-2 items-center">
+        <i class="pi pi-calendar"></i>
+        <p>{{ directorDetails().dateOfBirth | date }}</p>
+      </div>
+      <div>
+        <p>{{ directorDetails().description }}</p>
+      </div>
+    </div>
+    <div class="w-[60%] flex-none">
+      <p-carousel
+        [value]="directorDetails().movies"
+        [numVisible]="3"
+        [circular]="false"
+      >
+        <ng-template let-movie pTemplate="item">
+          <app-movie-card [movie]="movie"></app-movie-card>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</div>

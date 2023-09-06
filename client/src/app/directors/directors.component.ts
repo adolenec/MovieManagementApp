@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { DirectorsService } from './directors.service';
 import { DataViewModule } from 'primeng/dataview';
@@ -26,6 +26,10 @@ export class DirectorsComponent {
   directors = this.directorsService.directors;
   directorsRequest = this.directorsService.directorsRequest;
   loadingDirectors = this.directorsService.loadingDirectors;
+
+  firstItemIndex = computed(
+    () => (this.directorsRequest().page - 1) * this.directorsRequest().pageSize
+  );
 
   onSearchDirectors(searchTerm: string) {
     this.directorsRequest.mutate((req) => (req.searchTerm = searchTerm));

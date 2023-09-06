@@ -6,6 +6,7 @@ import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { debounceTime, switchMap, tap } from 'rxjs';
 import { PagedList } from '../shared/models/paged-list.model';
 import { Director } from './models/director.model';
+import { DirectorDetails } from './models/director-details.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,4 +36,11 @@ export class DirectorsService {
   directors = toSignal(this.directors$, {
     initialValue: {} as PagedList<Director>,
   });
+
+  selectedDirectorId = signal<number | undefined>(undefined);
+  directorDetails$ = toObservable(this.selectedDirectorId).pipe(
+    switchMap((id) => {
+      return this.http.get<DirectorDetails>(`${this.apiUrl}/directors/${id}`)
+    })
+  )
 }

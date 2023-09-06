@@ -1,0 +1,13 @@
+:host::ng-deep {
+  .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
+    @apply bg-slate-300;
+  }
+
+  .p-carousel .p-carousel-indicators .p-carousel-indicator button {
+    @apply bg-slate-700;
+  }
+
+  .p-divider-content {
+    @apply bg-slate-600;
+  }
+}
