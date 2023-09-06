@@ -1,0 +1,99 @@
+<ng-container>
+  <h1 class="text-slate-200 p-4 text-2xl bg-slate-600">
+    {{ isAddMode ? "Create director" : "Update director" }}
+  </h1>
+  <form
+    class="flex flex-col gap-3 px-4 py-2 text-slate-300"
+    [formGroup]="directorForm"
+    (ngSubmit)="submitForm()"
+  >
+    <div>
+      <label for="firstName" class="text-xs">First Name</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        class="w-full mt-1"
+        id="firstName"
+      />
+      <span
+        *ngIf="
+          directorForm.controls.firstName.errors &&
+          directorForm.controls.firstName.dirty
+        "
+        class="text-xs text-red-400"
+      >
+        First name is required
+      </span>
+    </div>
+    <div>
+      <label for="lastName" class="text-xs">Last Name</label>
+      <input
+        type="text"
+        formControlName="lastName"
+        class="w-full mt-1"
+        id="lastName"
+      />
+      <span
+        *ngIf="
+          directorForm.controls.lastName.errors &&
+          directorForm.controls.lastName.dirty
+        "
+        class="text-xs text-red-400"
+      >
+        Last name is required
+      </span>
+    </div>
+    <div>
+      <label for="description" class="text-xs">Description</label>
+      <textarea
+        formControlName="description"
+        class="w-full mt-1"
+        id="description"
+        rows="5"
+      >
+      </textarea>
+      <span
+        *ngIf="
+          directorForm.controls.description.errors &&
+          directorForm.controls.description.dirty
+        "
+        class="text-xs text-red-400"
+      >
+        Description is required
+      </span>
+    </div>
+    <div>
+      <label for="dateOfBirth" class="text-xs">Date of Birth</label>
+      <input
+        type="date"
+        formControlName="dateOfBirth"
+        class="w-full mt-1"
+        id="dateOfBirth"
+      />
+      <span
+        *ngIf="
+          directorForm.controls.dateOfBirth.errors &&
+          directorForm.controls.dateOfBirth.dirty
+        "
+        class="text-xs text-red-400"
+      >
+        Date of birth is required
+      </span>
+    </div>
+    <div class="flex justify-end items-center py-2">
+      <button
+        (click)="onCloseModal()"
+        type="button"
+        class="px-8 py-2 rounded-lg hover:bg-slate-400 hover:text-slate-200"
+      >
+        Close
+      </button>
+      <button
+        type="submit"
+        class="px-8 py-2 rounded-lg hover:bg-slate-400 hover:text-slate-200"
+      >
+        {{ isAddMode ? "Create" : "Update" }}
+      </button>
+    </div>
+  </form>
+</ng-container>

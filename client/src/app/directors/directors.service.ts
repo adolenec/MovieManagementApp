@@ -3,7 +3,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { API_URL } from '../app.config';
 import { DirectorsRequest } from './models/directors-request.model';
 import { toSignal, toObservable } from '@angular/core/rxjs-interop';
-import { Observable, debounceTime, switchMap, tap } from 'rxjs';
+import { debounceTime, switchMap, tap } from 'rxjs';
 import { PagedList } from '../shared/models/paged-list.model';
 import { Director } from './models/director.model';
 import { DirectorDetails } from './models/director-details.model';
@@ -51,7 +51,21 @@ export class DirectorsService {
     });
   }
 
-  deleteDirector(id: number): Observable<void> {
+  deleteDirector(id: number) {
     return this.http.delete<void>(`${this.apiUrl}/directors/${id}`);
+  }
+
+  createDirector(directorDetails: DirectorDetails) {
+    return this.http.post<DirectorDetails>(
+      `${this.apiUrl}/directors`,
+      directorDetails
+    );
+  }
+
+  updateDirector(directorDetails: DirectorDetails, id: number) {
+    return this.http.put<DirectorDetails>(
+      `${this.apiUrl}/directors/${id}`,
+      directorDetails
+    );
   }
 }

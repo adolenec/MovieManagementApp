@@ -4,7 +4,10 @@
       ><i class="pi pi-arrow-circle-left text-2xl cursor-pointer"></i
     ></a>
     <div>
-      <i class="pi pi-pencil text-2xl mr-3 rounded-full p-2 cursor-pointer"></i>
+      <i
+        (click)="onUpdateDirectorClick()"
+        class="pi pi-pencil text-2xl mr-3 rounded-full p-2 cursor-pointer"
+      ></i>
       <i
         (click)="onConfirmDelete()"
         class="pi pi-times-circle text-2xl cursor-pointer"

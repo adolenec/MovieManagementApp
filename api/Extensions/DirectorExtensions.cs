@@ -26,7 +26,7 @@ namespace api.Extensions
                 return Results.Created($"/directors/{director.Id}", director);
             });
 
-            app.MapPut("/directors", async (UpdateDirectorDto directorDto, int id, IDirectorRepository repository) =>
+            app.MapPut("/directors/{id}", async (UpdateDirectorDto directorDto, int id, IDirectorRepository repository) =>
             {
                 var director = await repository.GetDirectorAsync(id);
                 if (director is null)
