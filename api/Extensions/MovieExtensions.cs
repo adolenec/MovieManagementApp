@@ -21,6 +21,15 @@ namespace api.Extensions
                 return Results.Ok(movie);
             });
 
+            app.MapGet("/movies/favourites", (IMovieRepository repository) =>
+                repository.GetFavouriteMoviesAsync());
+
+            app.MapGet("/movies/watched", (IMovieRepository repository) =>
+                repository.GetWatchedMoviesAsync());
+
+            app.MapGet("/movies/watchlist", (IMovieRepository repository) =>
+                repository.GetWatchlistMoviesAsync());
+
             app.MapPost("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, IDirectorRepository directorRepository, CreateMovieDto createMovieDto) =>
             {
                 var director = await directorRepository.GetDirectorAsync(createMovieDto.DirectorId);

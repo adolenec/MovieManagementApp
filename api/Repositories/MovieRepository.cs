@@ -47,6 +47,30 @@ namespace api.Repositories
             return pagedList;
         }
 
+        public async Task<ICollection<MovieDto>> GetFavouriteMoviesAsync()
+        {
+
+            return await _context.Movies.Where(m => m.IsFavourite)
+                .ProjectTo<MovieDto>(_configuration).ToListAsync();
+
+        }
+
+        public async Task<ICollection<MovieDto>> GetWatchedMoviesAsync()
+        {
+
+            return await _context.Movies.Where(m => m.Watched)
+                .ProjectTo<MovieDto>(_configuration).ToListAsync();
+
+        }
+
+        public async Task<ICollection<MovieDto>> GetWatchlistMoviesAsync()
+        {
+
+            return await _context.Movies.Where(m => m.IsOnWatchlist)
+                .ProjectTo<MovieDto>(_configuration).ToListAsync();
+
+        }
+
         public async Task<MovieDetailsDto?> GetMovieAsync(int id)
         {
             var movie = await _context.Movies.Include(m => m.Category).Include(m => m.Director)
