@@ -1,4 +1,4 @@
-<div class="flex flex-col p-2 max-h-full">
+<div class="flex flex-col p-2 max-h-full text-xs md:text-base">
   <div class="flex items-center justify-between">
     <a [routerLink]="['..']"
       ><i class="pi pi-arrow-circle-left text-2xl cursor-pointer"></i
@@ -15,12 +15,12 @@
     </div>
   </div>
   <p-divider align="left">
-    <h1 class="text-3xl">
+    <h1 class="text-xl md:text-3xl">
       {{ movieDetails().name }}
     </h1>
   </p-divider>
   <div class="max-h-[90%] overflow-scroll">
-    <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-2 md:gap-8">
       <div class="flex flex-col gap-2">
         <p><span class="mr-2">Category: </span>{{ movieDetails().category }}</p>
         <p><span class="mr-2">Director: </span>{{ movieDetails().director }}</p>
@@ -35,7 +35,7 @@
         <p>{{ movieDetails().description }}</p>
       </div>
       <p-divider align="left">
-        <h1 class="text-xl">Actions</h1>
+        <h1 class="text-lg md:text-xl">Actions</h1>
       </p-divider>
       <app-movie-actions></app-movie-actions>
     </div>

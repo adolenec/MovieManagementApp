@@ -1,7 +1,9 @@
-<div class="flex gap-4 items-center justify-end text-sm">
-  <div class="flex gap-4 items-center">
+<div
+  class="flex flex-col md:flex-row gap-4 md:items-center justify-end text-xs md:text-sm"
+>
+  <div class="flex gap-2 items-center">
     <button
-      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      class="bg-slate-500 py-2 px-6 rounded-md flex md:gap-4 justify-between md:justify-normal items-center w-full md:w-auto"
       (click)="onUpdateFavouriteState(!movieDetails().isFavourite)"
     >
       {{
@@ -17,7 +19,7 @@
   </div>
   <div class="flex gap-4 items-center">
     <button
-      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      class="bg-slate-500 py-2 px-6 rounded-md flex md:gap-4 justify-between md:justify-normal items-center w-full md:w-auto"
       (click)="onUpdateWatchlistState(!movieDetails().isOnWatchlist)"
     >
       {{
@@ -35,7 +37,7 @@
   </div>
   <div class="flex gap-4 items-center">
     <button
-      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      class="bg-slate-500 py-2 px-6 rounded-md flex md:gap-4 justify-between md:justify-normal items-center w-full md:w-auto"
       (click)="onUpdateWatchedState(!movieDetails().watched)"
     >
       {{ movieDetails().watched ? "Mark as not watched" : "Mark as watched" }}

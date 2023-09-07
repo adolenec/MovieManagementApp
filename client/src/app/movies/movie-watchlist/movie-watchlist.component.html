@@ -1,1 +1,32 @@
-<p>movie-watchlist works!</p>
+<div class="max-h-[90%] overflow-scroll">
+  <p-divider align="left">
+    <h1 class="text-3xl">Watchlist</h1>
+  </p-divider>
+  <div
+    class="w-full"
+    *ngIf="watchlistMovies().length !== 0; else emptyWatchlist"
+  >
+    <p-carousel [value]="watchlistMovies()" [numVisible]="5" [circular]="false">
+      <ng-template let-movie pTemplate="item">
+        <app-movie-card [movie]="movie"></app-movie-card>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <ng-template #emptyWatchlist>
+    <p>You haven't added any movies to watchlist. Start adding some!</p>
+  </ng-template>
+
+  <p-divider align="left">
+    <h1 class="text-3xl">Already watched</h1>
+  </p-divider>
+  <div class="w-full" *ngIf="watchedMovies().length !== 0; else emptyWatched">
+    <p-carousel [value]="watchedMovies()" [numVisible]="5" [circular]="false">
+      <ng-template let-movie pTemplate="item">
+        <app-movie-card [movie]="movie"></app-movie-card>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <ng-template #emptyWatched>
+    <p>You haven't watched any movies yet. Start Watching some!</p>
+  </ng-template>
+</div>

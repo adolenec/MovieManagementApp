@@ -1,4 +1,4 @@
-<div class="flex flex-col p-2 max-h-full">
+<div class="flex flex-col p-2 max-h-full text-xs md:text-base">
   <div class="flex items-center justify-between">
     <a [routerLink]="['..']"
       ><i class="pi pi-arrow-circle-left text-2xl cursor-pointer"></i
@@ -19,7 +19,7 @@
       {{ directorDetails().firstName }} {{ directorDetails().lastName }}
     </h1>
   </p-divider>
-  <div class="max-h-[90%] overflow-scroll flex gap-4">
+  <div class="max-h-[90%] overflow-scroll flex flex-col md:flex-row gap-4">
     <div class="flex flex-col gap-4">
       <div class="flex gap-2 items-center">
         <i class="pi pi-calendar"></i>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div
-      class="w-[60%] flex-none"
+      class="w-full md:w-[60%] flex-none"
       *ngIf="directorDetails().movies?.length !== 0"
     >
       <p-carousel

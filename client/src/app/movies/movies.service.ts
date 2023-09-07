@@ -70,4 +70,19 @@ export class MoviesService {
       isOnWatchlist
     );
   }
+
+  favouriteMovies = signal<Movie[]>([] as Movie[]);
+  favouriteMovies$ = this.http
+    .get<Movie[]>(`${this.apiUrl}/movies/favourites`)
+    .pipe(tap((movies) => this.favouriteMovies.set(movies)));
+
+  watchedMovies = signal<Movie[]>([] as Movie[]);
+  watchedMovies$ = this.http
+    .get<Movie[]>(`${this.apiUrl}/movies/watched`)
+    .pipe(tap((movies) => this.watchedMovies.set(movies)));
+
+  watchlistMovies = signal<Movie[]>([] as Movie[]);
+  watchlistMovies$ = this.http
+    .get<Movie[]>(`${this.apiUrl}/movies/watchlist`)
+    .pipe(tap((movies) => this.watchlistMovies.set(movies)));
 }

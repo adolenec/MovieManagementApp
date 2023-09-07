@@ -1,6 +1,6 @@
 :host::ng-deep {
   .p-dataview {
-    @apply max-h-[90%] overflow-scroll;
+    @apply max-h-[80%] md:max-h-[90%] overflow-scroll;
   }
 
   .p-dataview-list {
@@ -12,7 +12,7 @@
   }
 
   .p-paginator {
-    @apply bg-slate-500 mb-2;
+    @apply bg-slate-500 mb-6 md:mb-2;
 
     .p-paginator-first,
     .p-paginator-last {
