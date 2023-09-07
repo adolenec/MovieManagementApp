@@ -1,0 +1,42 @@
+<div
+  class="bg-slate-500 text-slate-300 p-4 rounded-xl mb-2 flex flex-col gap-4 cursor-pointer"
+  [routerLink]="['..', movie.id]"
+>
+  <div class="flex justify-between items-center">
+    <h2 class="text-2xl text-slate-300">
+      {{ movie.name }}
+    </h2>
+    <div class="flex items-center gap-3">
+      <p>Favourite</p>
+      <i
+        class="pi pi-star-fill mr-1 text-2xl"
+        [ngClass]="movie.isFavourite ? 'text-yellow-500' : ''"
+      ></i>
+      <p>Watchlist</p>
+      <i
+        [ngClass]="movie.isOnWatchlist ? 'pi pi-eye' : 'pi pi-eye-slash'"
+        class="mr-1 text-2xl"
+      ></i>
+      <p>Watched</p>
+      <i
+        [ngClass]="movie.watched ? 'pi pi-check-circle' : 'pi pi-times-circle'"
+        class="mr-1 text-2xl"
+      ></i>
+    </div>
+  </div>
+  <hr />
+  <div class="flex gap-16">
+    <div class="flex-none w-64">
+      <img src="/assets/images/movie.png" class="w-full h-full" />
+    </div>
+    <div class="grow flex flex-col gap-2">
+      <p class="flex gap-1 items-center">
+        <span class="mr-2">Rating: </span>
+        {{ movie.rating }}
+        <i class="pi pi-star-fill text-yellow-500 mr-1"></i>
+      </p>
+      <p><span class="mr-2">Director: </span>{{ movie.director }}</p>
+      <p><span class="mr-2">Category: </span>{{ movie.category }}</p>
+    </div>
+  </div>
+</div>

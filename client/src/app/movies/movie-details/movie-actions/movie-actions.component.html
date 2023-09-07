@@ -1,0 +1,50 @@
+<div class="flex gap-4 items-center justify-end text-sm">
+  <div class="flex gap-4 items-center">
+    <button
+      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      (click)="onUpdateFavouriteState(!movieDetails().isFavourite)"
+    >
+      {{
+        movieDetails().isFavourite
+          ? "Remove from favourites"
+          : "Add to favourites"
+      }}
+      <i
+        class="pi pi-star-fill mr-1"
+        [ngClass]="movieDetails().isFavourite ? 'text-yellow-500' : ''"
+      ></i>
+    </button>
+  </div>
+  <div class="flex gap-4 items-center">
+    <button
+      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      (click)="onUpdateWatchlistState(!movieDetails().isOnWatchlist)"
+    >
+      {{
+        movieDetails().isOnWatchlist
+          ? "Remove from watchlist"
+          : "Add to watchlist"
+      }}
+      <i
+        [ngClass]="
+          movieDetails().isOnWatchlist ? 'pi pi-eye' : 'pi pi-eye-slash'
+        "
+        class="mr-1"
+      ></i>
+    </button>
+  </div>
+  <div class="flex gap-4 items-center">
+    <button
+      class="bg-slate-500 py-2 px-6 rounded-md flex gap-4 items-center"
+      (click)="onUpdateWatchedState(!movieDetails().watched)"
+    >
+      {{ movieDetails().watched ? "Mark as not watched" : "Mark as watched" }}
+      <i
+        [ngClass]="
+          movieDetails().watched ? 'pi pi-check-circle' : 'pi pi-times-circle'
+        "
+        class="mr-1 text"
+      ></i>
+    </button>
+  </div>
+</div>

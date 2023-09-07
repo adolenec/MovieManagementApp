@@ -59,7 +59,7 @@ namespace api.Extensions
                 return Results.Ok(updateMovieDto);
             });
 
-            app.MapPut("/movies/favourite", async (IMovieRepository repository, int id, bool isFavourite) =>
+            app.MapPut("/movies/{id}/favourite", async (IMovieRepository repository, int id, [FromBody] bool isFavourite) =>
             {
                 var movie = await repository.GetMovieAsync(id);
                 if (movie is null)
@@ -69,7 +69,7 @@ namespace api.Extensions
                 return Results.Ok();
             });
 
-            app.MapPut("/movies/watched", async (IMovieRepository repository, int id, bool watched) =>
+            app.MapPut("/movies/{id}/watched", async (IMovieRepository repository, int id, [FromBody] bool watched) =>
             {
                 var movie = await repository.GetMovieAsync(id);
                 if (movie is null)
@@ -79,7 +79,7 @@ namespace api.Extensions
                 return Results.Ok();
             });
 
-            app.MapPut("/movies/watchlist", async (IMovieRepository repository, int id, bool isOnWatchlist) =>
+            app.MapPut("/movies/{id}/watchlist", async (IMovieRepository repository, int id, [FromBody] bool isOnWatchlist) =>
             {
                 var movie = await repository.GetMovieAsync(id);
                 if (movie is null)

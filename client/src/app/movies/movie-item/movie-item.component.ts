@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Movie } from '../models/movie.model';
 import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-movie-card',
+  selector: 'app-movie-item',
   standalone: true,
-  templateUrl: './movie-card.component.html',
-  imports: [RouterLink],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, NgClass],
+  templateUrl: './movie-item.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MovieCardComponent {
+export class MovieItemComponent {
   @Input({ required: true }) movie!: Movie;
 }

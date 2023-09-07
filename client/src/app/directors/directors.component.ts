@@ -40,7 +40,6 @@ export class DirectorsComponent {
   loadingDirectors = this.directorsService.loadingDirectors;
 
   ref: DynamicDialogRef | undefined;
-  // ref = inject(DynamicDialogRef);
 
   firstItemIndex = computed(
     () => (this.directorsRequest().page - 1) * this.directorsRequest().pageSize

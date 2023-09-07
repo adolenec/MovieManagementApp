@@ -1,1 +1,36 @@
-<p>movies works!</p>
+<ng-container>
+  <div class="flex justify-between items-center my-4">
+    <h1 class="text-3xl">Movies</h1>
+    <div class="flex items-center gap-6">
+      <i
+        (click)="onAddDirectorClick()"
+        class="pi pi-plus-circle text-3xl cursor-pointer"
+      ></i>
+      <input
+        #search
+        type="text"
+        placeholder="Search..."
+        [(ngModel)]="moviesRequest().searchTerm"
+        (input)="onSearchMovies(search.value)"
+      />
+    </div>
+  </div>
+  <p-dataView
+    #dv
+    layout="list"
+    loadingIcon="pi pi-spin pi-spinner"
+    [value]="movies().items"
+    [loading]="loadingMovies()"
+    [paginator]="true"
+    [rows]="moviesRequest().pageSize"
+    [totalRecords]="movies().totalCount"
+    [rowsPerPageOptions]="[5, 10, 15]"
+    [lazy]="true"
+    [first]="firstItemIndex()"
+    (onPage)="onPageChange($event)"
+  >
+    <ng-template let-movie pTemplate="listItem">
+      <app-movie-item [movie]="movie"></app-movie-item>
+    </ng-template>
+  </p-dataView>
+</ng-container>
