@@ -11,6 +11,9 @@ namespace api.Extensions
             app.MapGet("/categories", (ICategoryRepository repository, int page, int pageSize, string? searchTerm) =>
                 repository.GetCategoriesAsync(page, pageSize, searchTerm));
 
+            app.MapGet("/categories/dropdown", (ICategoryRepository repository, string? searchTerm) =>
+                repository.GetDropdownCategoriesAsync(searchTerm));
+
             app.MapGet("categories/{id}", async (ICategoryRepository repository, int id) =>
             {
                 var category = await repository.GetCategoryAsync(id);

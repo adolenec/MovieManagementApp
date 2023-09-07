@@ -36,7 +36,7 @@ namespace api.Mappings
 
             #endregion
 
-            #region
+            #region Directors
 
             CreateMap<Director, DirectorDto>();
 
@@ -44,6 +44,16 @@ namespace api.Mappings
                 .ForCtorParam(ctorParamName: "Movies", opt => opt.MapFrom(src => src.Movies));
 
             CreateMap<CreateDirectorDto, Director>();
+
+            #endregion
+
+            #region Dropdown
+
+            CreateMap<Category, DropdownDto>();
+
+            CreateMap<Director, DropdownDto>()
+                .ForCtorParam(ctorParamName: "Name", opt =>
+                    opt.MapFrom(src => src.FirstName + " " + src.LastName));
 
             #endregion
 

@@ -44,6 +44,23 @@ namespace api.Repositories
             return pagedList;
         }
 
+        public async Task<ICollection<DropdownDto>> GetDropdownCategoriesAsync(string? searchTerm)
+        {
+            var query = _context.Categories.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                query = query.Where(m => m.Name.ToLower().Contains(searchTerm));
+
+            }
+
+            var categories = await query.Take(10)
+                .ProjectTo<DropdownDto>(_configuration).ToListAsync();
+
+            return categories;
+        }
+
         public async Task<CategoryDetailsDto?> GetCategoryAsync(int id)
         {
             var category = await _context.Categories.Include(c => c.Movies).ThenInclude(m => m.Director)

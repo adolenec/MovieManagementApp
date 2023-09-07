@@ -44,6 +44,23 @@ namespace api.Repositories
             return pagedList;
         }
 
+        public async Task<ICollection<DropdownDto>> GetDropdownDirectorsAsync(string? searchTerm)
+        {
+            var query = _context.Directors.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                query = query.Where(d => (d.FirstName.ToLower() + " " + d.LastName.ToLower()).Contains(searchTerm));
+
+            }
+
+            var directors = await query.Take(10)
+                .ProjectTo<DropdownDto>(_configuration).ToListAsync();
+
+            return directors;
+        }
+
         public async Task<DirectorDetailsDto?> GetDirectorAsync(int id)
         {
             var director = await _context.Directors

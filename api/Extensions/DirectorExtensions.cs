@@ -11,6 +11,9 @@ namespace api.Extensions
             app.MapGet("/directors", (IDirectorRepository repository, int page, int pageSize, string? searchTerm) =>
                 repository.GetDirectorsAsync(page, pageSize, searchTerm));
 
+            app.MapGet("/directors/dropdown", (IDirectorRepository repository, string? searchTerm) =>
+                repository.GetDropdownDirectorsAsync(searchTerm));
+
             app.MapGet("directors/{id}", async (IDirectorRepository repository, int id) =>
             {
                 var director = await repository.GetDirectorAsync(id);
