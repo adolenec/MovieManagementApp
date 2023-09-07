@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { DatePipe, NgIf } from '@angular/common';
 import { DirectorsService } from '../directors.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -34,7 +34,7 @@ import { MessageService } from 'primeng/api';
   templateUrl: './director-details.component.html',
   styleUrls: ['./director-details.component.scss'],
 })
-export class DirectorDetailsComponent {
+export class DirectorDetailsComponent implements OnInit {
   //route parameter
   @Input() id = '';
 

@@ -1,0 +1,17 @@
+<div
+  class="bg-slate-500 text-slate-300 p-4 rounded-xl mb-2 flex flex-col gap-4 cursor-pointer"
+  [routerLink]="[category.id]"
+>
+  <h2 class="text-2xl text-slate-300">
+    {{ category.name }}
+  </h2>
+  <hr />
+  <div class="flex gap-16">
+    <div class="flex-none w-64 h-40 bg-white">
+      <img src="/assets/images/category.webp" class="w-full h-full" />
+    </div>
+    <div class="grow">
+      <p>{{ category.description }}</p>
+    </div>
+  </div>
+</div>

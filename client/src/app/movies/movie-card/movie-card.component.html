@@ -1,9 +1,9 @@
 <div
-  class="bg-slate-500 text-slate-300 h-64 rounded-lg m-2 text-center flex flex-col justify-between py-5 px-3"
+  class="bg-slate-500 text-slate-300 h-64 rounded-lg m-2 text-center flex flex-col justify-between py-5 px-3 cursor-pointer"
   [routerLink]="['/movies', movie.id]"
 >
   <div class="mb-3">
-    <p class="font-bold">{{ movie.name }}</p>
+    <p class="font-bold">{{ movie.name }} ({{ movie.director }})</p>
     <h4 class="text-sm mt-1">{{ movie.category }}</h4>
   </div>
   <div>

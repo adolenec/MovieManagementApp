@@ -26,7 +26,7 @@ namespace api.Extensions
                 return Results.Created($"/categories/{category.Id}", category);
             });
 
-            app.MapPut("/categories", async (UpdateCategoryDto categoryDto, int id, ICategoryRepository repository) =>
+            app.MapPut("/categories/{id}", async (UpdateCategoryDto categoryDto, int id, ICategoryRepository repository) =>
             {
                 var category = await repository.GetCategoryAsync(id);
                 if (category is null)

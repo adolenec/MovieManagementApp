@@ -1,1 +1,36 @@
-<p>categories works!</p>
+<ng-container>
+  <div class="flex justify-between items-center my-4">
+    <h1 class="text-3xl">Categories</h1>
+    <div class="flex items-center gap-6">
+      <i
+        (click)="onAddCategoryClick()"
+        class="pi pi-plus-circle text-3xl cursor-pointer"
+      ></i>
+      <input
+        #search
+        type="text"
+        placeholder="Search..."
+        [(ngModel)]="categoriesRequest().searchTerm"
+        (input)="onSearchCategories(search.value)"
+      />
+    </div>
+  </div>
+  <p-dataView
+    #dv
+    layout="list"
+    loadingIcon="pi pi-spin pi-spinner"
+    [value]="categories().items"
+    [loading]="loadingCategories()"
+    [paginator]="true"
+    [rows]="categoriesRequest().pageSize"
+    [totalRecords]="categories().totalCount"
+    [rowsPerPageOptions]="[5, 10, 15]"
+    [lazy]="true"
+    [first]="firstItemIndex()"
+    (onPage)="onPageChange($event)"
+  >
+    <ng-template let-category pTemplate="listItem">
+      <app-category-item [category]="category"></app-category-item>
+    </ng-template>
+  </p-dataView>
+</ng-container>

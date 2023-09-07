@@ -30,8 +30,7 @@ namespace api.Repositories
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 searchTerm = searchTerm.ToLower();
-                query = query.Where(m => m.Name.ToLower().Contains(searchTerm) ||
-                                         m.Description.ToLower().Contains(searchTerm));
+                query = query.Where(m => m.Name.ToLower().Contains(searchTerm));
 
             }
 
