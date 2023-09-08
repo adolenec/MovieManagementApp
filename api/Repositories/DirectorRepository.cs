@@ -10,8 +10,8 @@ using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace api.Repositories
 {
-	public class DirectorRepository : IDirectorRepository
-	{
+    public class DirectorRepository : IDirectorRepository
+    {
         private readonly MovieManagementContext _context;
         private readonly IConfigurationProvider _configuration;
         private readonly IMapper _mapper;

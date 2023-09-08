@@ -5,8 +5,8 @@ using AutoMapper;
 
 namespace api.Mappings
 {
-	public class MappingConfiguration : Profile
-	{
+    public class MappingConfiguration : Profile
+    {
         public MappingConfiguration()
         {
             #region Movies

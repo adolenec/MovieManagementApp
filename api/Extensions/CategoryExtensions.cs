@@ -4,8 +4,8 @@ using api.Interfaces;
 
 namespace api.Extensions
 {
-	public static class CategoryExtensions
-	{
+    public static class CategoryExtensions
+    {
         public static void MapCategoryEndpoints(this WebApplication app)
         {
             app.MapGet("/categories", (ICategoryRepository repository, int page, int pageSize, string? searchTerm) =>

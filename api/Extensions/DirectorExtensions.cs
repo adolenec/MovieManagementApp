@@ -4,8 +4,8 @@ using api.Interfaces;
 
 namespace api.Extensions
 {
-	public static class DirectorExtensions
-	{
+    public static class DirectorExtensions
+    {
         public static void MapDirectorEndpoints(this WebApplication app)
         {
             app.MapGet("/directors", (IDirectorRepository repository, int page, int pageSize, string? searchTerm) =>

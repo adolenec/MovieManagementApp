@@ -3,8 +3,8 @@ using api.Dtos;
 
 namespace api.Interfaces
 {
-	public interface IDirectorRepository
-	{
+    public interface IDirectorRepository
+    {
         Task<PagedList<DirectorDto>> GetDirectorsAsync(int page, int pageSize, string? searchTerm);
         Task<ICollection<DropdownDto>> GetDropdownDirectorsAsync(string? searchTerm);
         Task<DirectorDetailsDto?> GetDirectorAsync(int id);

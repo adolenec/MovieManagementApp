@@ -3,8 +3,8 @@ using api.Dtos;
 
 namespace api.Interfaces
 {
-	public interface IMovieRepository
-	{
+    public interface IMovieRepository
+    {
         Task<PagedList<MovieDto>> GetMoviesAsync(int page, int pageSize, string? searchTerm);
         Task<MovieDetailsDto?> GetMovieAsync(int id);
         Task<ICollection<MovieDto>> GetFavouriteMoviesAsync();

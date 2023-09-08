@@ -11,14 +11,14 @@ using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace api.Repositories
 {
-	public class MovieRepository : IMovieRepository
-	{
+    public class MovieRepository : IMovieRepository
+    {
         private readonly MovieManagementContext _context;
         private readonly IConfigurationProvider _configuration;
         private readonly IMapper _mapper;
 
         public MovieRepository(MovieManagementContext context, IConfigurationProvider configuration, IMapper mapper)
-		{
+        {
             _context = context;
             _configuration = configuration;
             _mapper = mapper;
@@ -103,7 +103,7 @@ namespace api.Repositories
             _context.Entry(movie).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return _mapper.Map<MovieDetailsDto>(movie);
-            
+
         }
 
         public async Task UpdateFavouriteState(int id, bool isFavourite)

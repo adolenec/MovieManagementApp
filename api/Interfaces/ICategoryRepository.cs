@@ -3,8 +3,8 @@ using api.Dtos;
 
 namespace api.Interfaces
 {
-	public interface ICategoryRepository
-	{
+    public interface ICategoryRepository
+    {
         Task<PagedList<CategoryDto>> GetCategoriesAsync(int page, int pageSize, string? searchTerm);
         Task<ICollection<DropdownDto>> GetDropdownCategoriesAsync(string? searchTerm);
         Task<CategoryDetailsDto?> GetCategoryAsync(int id);
