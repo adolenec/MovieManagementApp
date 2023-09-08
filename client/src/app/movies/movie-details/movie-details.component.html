@@ -22,8 +22,12 @@
   <div class="max-h-[90%] overflow-scroll">
     <div class="flex flex-col gap-2 md:gap-8">
       <div class="flex flex-col gap-2">
-        <p><span class="mr-2">Category: </span>{{ movieDetails().category }}</p>
-        <p><span class="mr-2">Director: </span>{{ movieDetails().director }}</p>
+        <p>
+          <span class="mr-2">Category: </span>{{ movieDetails().category.name }}
+        </p>
+        <p>
+          <span class="mr-2">Director: </span>{{ movieDetails().director.name }}
+        </p>
         <p>
           <span
             >Rating:
