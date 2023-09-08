@@ -1,0 +1,55 @@
+:host::ng-deep {
+  .p-dropdown {
+    @apply py-4 flex items-center justify-between w-full bg-transparent border-slate-200 rounded-md border-solid h-8 border p-1 text-slate-200;
+
+    &:focus,
+    &:hover {
+      @apply outline-none;
+    }
+
+    .p-dropdown-label.p-placeholder {
+      @apply text-slate-300 text-xs flex items-center;
+    }
+
+    .p-dropdown-trigger {
+      @apply text-slate-300;
+    }
+  }
+
+  .p-dropdown:not(.p-disabled):hover {
+    @apply border-slate-200;
+  }
+
+  .p-dropdown:focus,
+  .p-dropdown:hover {
+    @apply outline-none;
+  }
+
+  p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
+    @apply border-slate-200;
+  }
+
+  .p-icon {
+    @apply w-2.5 h-2.5;
+  }
+
+  .p-dropdown-panel .p-dropdown-items {
+    @apply bg-slate-300 text-slate-100;
+
+    .p-dropdown-item.p-highlight {
+      @apply text-slate-800;
+    }
+  }
+
+  .p-dropdown-panel .p-dropdown-header {
+    @apply bg-slate-400;
+
+    input {
+      @apply text-slate-300
+    }
+  }
+
+  .p-inputtext {
+    @apply text-slate-300 text-xs;
+  }
+}

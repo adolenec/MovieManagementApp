@@ -9,6 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { validateForm } from 'src/app/shared/helpers/validate-form';
 
 @Component({
   selector: 'app-category-form',
@@ -42,26 +43,13 @@ export class CategoryFormComponent {
     this.isAddMode ? this.createCategory() : this.updateCategory();
   }
 
-  private validateForm() {
-    if (!this.categoryForm.valid) {
-      Object.values(this.categoryForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-      return false;
-    }
-    return true;
-  }
-
   private createCategory() {
-    if (!this.validateForm()) return;
+    if (!validateForm(this.categoryForm)) return;
     this.ref.close(this.categoryForm.value);
   }
 
   private updateCategory() {
-    if (!this.validateForm()) return;
+    if (!validateForm(this.categoryForm)) return;
     this.ref.close(this.categoryForm.value);
   }
 }

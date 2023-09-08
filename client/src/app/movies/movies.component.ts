@@ -7,6 +7,8 @@ import { MessageService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { DataViewModule } from 'primeng/dataview';
 import { MovieItemComponent } from './movie-item/movie-item.component';
+import { MovieFormComponent } from './movie-form/movie-form.component';
+import { CreateMovie } from './models/create-movie.model';
 
 @Component({
   selector: 'app-movies',
@@ -52,5 +54,25 @@ export class MoviesComponent {
     });
   }
 
-  onAddDirectorClick() {}
+  onAddDirectorClick() {
+    this.ref = this.dialogService.open(MovieFormComponent, {
+      showHeader: false,
+      width: '460px',
+      data: {
+        isAddMode: true,
+      },
+    });
+
+    this.ref.onClose.subscribe((movie: CreateMovie) => {
+      if (movie) {
+        this.moviesService.createMovie(movie).subscribe((_) => {
+          this.messageService.add({
+            summary: 'Movie created',
+            detail: 'You have successfully created a movie!',
+          });
+          this.moviesService.refetchMovies();
+        });
+      }
+    });
+  }
 }

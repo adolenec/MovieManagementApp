@@ -13,6 +13,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { validateForm } from 'src/app/shared/helpers/validate-form';
 
 @Component({
   selector: 'app-director-form',
@@ -58,26 +59,13 @@ export class DirectorFormComponent {
     this.isAddMode ? this.createDirector() : this.updateDirector();
   }
 
-  private validateForm() {
-    if (!this.directorForm.valid) {
-      Object.values(this.directorForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-      return false;
-    }
-    return true;
-  }
-
   private createDirector() {
-    if (!this.validateForm()) return;
+    if (!validateForm(this.directorForm)) return;
     this.ref.close(this.directorForm.value);
   }
 
   private updateDirector() {
-    if (!this.validateForm()) return;
+    if (!validateForm(this.directorForm)) return;
     this.ref.close(this.directorForm.value);
   }
 }

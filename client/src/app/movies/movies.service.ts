@@ -7,6 +7,7 @@ import { PagedList } from '../shared/models/paged-list.model';
 import { MoviesRequest } from './models/movies-request.model';
 import { Movie } from './models/movie.model';
 import { MovieDetails } from './models/movie-details.model';
+import { CreateMovie } from './models/create-movie.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,11 +40,15 @@ export class MoviesService {
 
   selectedMovieId = signal<number | undefined>(undefined);
   movieDetails = signal<MovieDetails>({} as MovieDetails);
+  detailsLoading = signal(true);
   movieDetails$ = toObservable(this.selectedMovieId).pipe(
     switchMap((id) => {
       return this.http.get<MovieDetails>(`${this.apiUrl}/movies/${id}`);
     }),
-    tap((movie) => this.movieDetails.set(movie))
+    tap((movie) => {
+      this.movieDetails.set(movie);
+      this.detailsLoading.set(false);
+    })
   );
 
   //refetch but keep paging and searching params
@@ -69,6 +74,18 @@ export class MoviesService {
       `${this.apiUrl}/movies/${id}/watchlist`,
       isOnWatchlist
     );
+  }
+
+  createMovie(movie: CreateMovie) {
+    return this.http.post<MovieDetails[]>(`${this.apiUrl}/movies`, movie);
+  }
+
+  updateMovie(movie: CreateMovie, id: number) {
+    return this.http.put<MovieDetails[]>(`${this.apiUrl}/movies/${id}`, movie);
+  }
+
+  deleteMovie(id: number) {
+    return this.http.delete<void>(`${this.apiUrl}/movies/${id}`);
   }
 
   favouriteMovies = signal<Movie[]>([] as Movie[]);

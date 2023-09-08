@@ -47,7 +47,7 @@ namespace api.Extensions
                 return Results.Created($"/movies/{movie.Id}", movie);
             });
 
-            app.MapPut("/movies", async (IMovieRepository repository, ICategoryRepository categoryRepository, IDirectorRepository directorRepository, UpdateMovieDto updateMovieDto, int id) =>
+            app.MapPut("/movies/{id}", async (IMovieRepository repository, ICategoryRepository categoryRepository, IDirectorRepository directorRepository, UpdateMovieDto updateMovieDto, int id) =>
             {
                 var movie = await repository.GetMovieAsync(id);
 
